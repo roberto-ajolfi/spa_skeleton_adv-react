@@ -1,6 +1,78 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Single Page Application Skeleton (in React)
+Questo progetto è parte del corso di Advanced React e il suo utilizzo è a solo scopo didattico.
+Per crearlo è stato utilizzzata la CLI [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Attività da svolgere
+1. Aggiungere la list view con l'elenco dei Tickets
+	- Open New Ticket (button)
+	- Edit / Delete del singolo Ticket
+
+2. Aggiungere la form di inserimento nuovo Ticket
+
+3. Aggiungere la form di modifica di un Ticket esistente
+
+4. Aggiungere la cancellazione di un Ticket
+
+5. Aggiungere un componente di notifica Toastr-like, utilizzando un Portal component
+
+6. Realizzare un componente che usi HOC *oppure* Render Props *oppure* Hook per incapsulare 
+la chiamata al servizio dati
+
+7. Aggiungere alcunei test con Jest per validate il funzionamento di alcune parti 
+*(a scelta)* della applicazione 
+
+
+**Tutte le view andranno create come Function Component, 
+utilizzando gli hooks dove necessario.**
+
+*Tutte le funzionalità dovranno utilizzare un servizio che 
+implementa le funzionalità CRUD (GET, POST, PUT, DELETE) 
+comunicando con le REST API disponibili all'URL indicato 
+nella documentazione.*
+
+# Documentazione
+## Accesso al servizio REST
+**URL:** https://icticketing.azurewebsites.net/api/ticketanon
+
+**Come specificare HTTP Verb, Body e Headers nelle chiamate HTTP**
+```
+const promise = await fetch(this.apiURL, { 
+                method: 'POST',
+                headers: this.basicHeaders,
+                body: JSON.stringify(ticket)
+            });
+```
+
+## Form di Creazione Ticket
+**Campi**
+- *Title* (testo)
+- *Description* (testo multi linea)
+- *Category* (combo)
+    - Unknown (valore = 1)
+    - Development (2)
+    - System (3)
+- *Priority* (combo)
+    - Low (valore = 1)
+    - Normal (2)
+    - High (3)
+
+## Form di Modifica Ticket
+**Campi**
+- *Title* (testo)
+- *Description* (testo multi linea)
+- *Category* (combo, valori come sopra)
+- *Priority* (combo, valori come sopra)
+- *State* (combo)
+    - New (valore = 1)
+    - On Going (2)
+    - Close (3)
+
+## Nota sul modello Ticket
+Nella cartella Models è presente una classe `Ticket`, 
+da utilizzarsi per il popolamento della vista tabellare (punto 1).
+Questo modello NON è adatto per il salvataggio di un nuovo Ticket / Ticket modificato: utilizzare il modello `TicketWriteModel`.
+
+## Script disponibili
 
 In the project directory, you can run:
 
