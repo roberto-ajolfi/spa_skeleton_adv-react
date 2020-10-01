@@ -15,10 +15,10 @@ Per crearlo è stato utilizzzata la CLI [Create React App](https://github.com/fa
 
 5. Aggiungere un componente di notifica Toastr-like, utilizzando un Portal component
 
-6. Realizzare un componente che usi HOC *oppure* Render Props *oppure* Hook per incapsulare 
+6. [OPZIONALE] Realizzare un componente che usi HOC *oppure* Render Props *oppure* Hook per incapsulare 
 la chiamata al servizio dati
 
-7. Aggiungere alcunei test con Jest per validate il funzionamento di alcune parti 
+7. [OPZIONALE] Aggiungere alcunei test con Jest per validate il funzionamento di alcune parti 
 *(a scelta)* della applicazione 
 
 
