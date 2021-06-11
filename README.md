@@ -15,10 +15,10 @@ Per crearlo è stato utilizzzata la CLI [Create React App](https://github.com/fa
 
 5. Aggiungere un componente di notifica Toastr-like, utilizzando un Portal component
 
-6. [OPZIONALE] Realizzare un componente che usi HOC *oppure* Render Props *oppure* Hook per incapsulare 
+6. Realizzare un componente che usi HOC *oppure* Render Props *oppure* Hook per incapsulare 
 la chiamata al servizio dati
 
-7. [OPZIONALE] Aggiungere alcunei test con Jest per validate il funzionamento di alcune parti 
+7. Aggiungere alcuni test con Jest per validate il funzionamento di alcune parti 
 *(a scelta)* della applicazione 
 
 
@@ -32,15 +32,27 @@ nella documentazione.*
 
 # Documentazione
 ## Accesso al servizio REST
-**URL:** https://icticketing.azurewebsites.net/api/ticketanon
+**URL (Anonymous):** https://icticketing.azurewebsites.net/api/ticketanon
+
+**URL (Basic):** https://icticketing.azurewebsites.net/api/ticket
 
 **Come specificare HTTP Verb, Body e Headers nelle chiamate HTTP**
-```
+```js
+basicAuthAccount: string = "guest1:Gu&st!";  // user:password
+
+// "Accept" e "Content-Type" sono NECESSARI per le richieste PUT e POST
+// "Authorization" serve se si usa il servizio con Basic authentication
+basicHeaders: Headers = new Headers({
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Basic " + btoa(this.basicAuthAccount)
+});
+
 const promise = await fetch(this.apiURL, { 
-                method: 'POST',
-                headers: this.basicHeaders,
-                body: JSON.stringify(ticket)
-            });
+    method: 'POST',
+    headers: this.basicHeaders,
+    body: JSON.stringify(ticket)
+});
 ```
 
 ## Form di Creazione Ticket
@@ -68,9 +80,7 @@ const promise = await fetch(this.apiURL, {
     - Close (3)
 
 ## Nota sul modello Ticket
-Nella cartella Models è presente una classe `Ticket`, 
-da utilizzarsi per il popolamento della vista tabellare (punto 1).
-Questo modello NON è adatto per il salvataggio di un nuovo Ticket / Ticket modificato: utilizzare il modello `TicketWriteModel`.
+Nella cartella Models è presente una classe Ticket, da utilizzarsi per il popolamento della vista tabellare (punto 1). Questo modello NON è adatto per il salvataggio di un nuovo Ticket / Ticket modificato.
 
 ## Script disponibili
 
